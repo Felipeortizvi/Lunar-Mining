@@ -5,7 +5,7 @@
 #include <vector>
 #include <random>
 #include <limits>
-#include "Event.h"
+#include "MiningProcess.h"
 #include "MiningTruck.h"
 #include "MiningStation.h"
 
@@ -39,22 +39,22 @@ private:
     std::vector<Station> stations;
 
     // Priority queue of events (min-heap by event time)
-    std::priority_queue<Event, std::vector<Event>, std::greater<Event>> eventQueue;
+    std::priority_queue<Process, std::vector<Process>, std::greater<Process>> eventQueue;
 
     // Random number generator
     std::mt19937 rng;
 
 private:
     // Helper functions
-    void scheduleEvent(const Event &evt);
+    void scheduleEvent(const Process &evt);
     int getRandomMiningDuration();
 
     // Event handlers
-    void handleFinishMining(const Event &evt);
-    void handleArriveStation(const Event &evt);
-    void handleFinishUnloading(const Event &evt);
+    void handleFinishMining(const Process &evt);
+    void handleArriveStation(const Process &evt);
+    void handleFinishUnloading(const Process &evt);
 
-    // Helper to find which station just finished unloading
+    // Helper method to find which station just finished unloading
     int findStationUsedForUnloading(int finishTime);
 
     // Final reporting

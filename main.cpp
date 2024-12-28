@@ -7,13 +7,13 @@ int main(int argc, char** argv) {
     int nStations = 2;
 
     // Optionally parse from command line
-    if (argc == 3) {
-        // nTrucks   = std::stoi(argv[1]);
-        // nStations = std::stoi(argv[2]);
+    // if (argc == 3) {
+    //     nTrucks   = std::stoi(argv[1]);
+    //     nStations = std::stoi(argv[2]);
 
-        nTrucks   = std::atoi(argv[1]);
-        nStations = std::atoi(argv[2]);
-    }
+    //     nTrucks   = std::atoi(argv[1]);
+    //     nStations = std::atoi(argv[2]);
+    // }
 
     std::cout << "Starting Lunar Helium-3 Mining Simulation\n";
     std::cout << "Number of Trucks: " << nTrucks << "\n";

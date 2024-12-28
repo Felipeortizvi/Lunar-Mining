@@ -30,12 +30,12 @@ void Simulation::run() {
     for (int i = 0; i < numTrucks; ++i) {
         int miningDuration = getRandomMiningDuration();
         trucks[i].addMiningTime(miningDuration);
-        scheduleEvent(Event{ miningDuration, i, EventType::FINISH_MINING });
+        scheduleEvent(Process{ miningDuration, i, ProcessType::FINISH_MINING });
     }
 
     // Do events until time exceeds 72 hours
     while (!eventQueue.empty()) {
-        Event evt = eventQueue.top();
+        Process evt = eventQueue.top();
         eventQueue.pop();
 
         // If this event time is beyond the simulation end time, stop
@@ -48,13 +48,13 @@ void Simulation::run() {
 
         // Switch case event to correct handling logic
         switch (evt.type) {
-            case EventType::FINISH_MINING:
+            case ProcessType::FINISH_MINING:
                 handleFinishMining(evt);
                 break;
-            case EventType::ARRIVE_STATION:
+            case ProcessType::ARRIVE_STATION:
                 handleArriveStation(evt);
                 break;
-            case EventType::FINISH_UNLOADING:
+            case ProcessType::FINISH_UNLOADING:
                 handleFinishUnloading(evt);
                 break;
         }
@@ -64,7 +64,7 @@ void Simulation::run() {
     reportStatistics();
 }
 
-void Simulation::scheduleEvent(const Event &evt) {
+void Simulation::scheduleEvent(const Process &evt) {
     eventQueue.push(evt);
 }
 
@@ -74,17 +74,17 @@ int Simulation::getRandomMiningDuration() {
 }
 
 // Mining State handlers (Whichever state the truck process is in, the logic is created here)
-void Simulation::handleFinishMining(const Event &evt) {
+void Simulation::handleFinishMining(const Process &evt) {
     int truckID = evt.truckID;
 
     // Truck travels to station (30 min)
     trucks[truckID].addTravelTime(TRAVEL_TIME_MIN);
 
     int arrivalTime = currentTime + TRAVEL_TIME_MIN;
-    scheduleEvent(Event{ arrivalTime, truckID, EventType::ARRIVE_STATION });
+    scheduleEvent(Process{ arrivalTime, truckID, ProcessType::ARRIVE_STATION });
 }
 
-void Simulation::handleArriveStation(const Event &evt) {
+void Simulation::handleArriveStation(const Process &evt) {
     int truckID = evt.truckID;
 
     // Find earliest available station
@@ -111,10 +111,10 @@ void Simulation::handleArriveStation(const Event &evt) {
     stations[earliestStation].addTimeBusy(UNLOAD_TIME_MIN);
 
     // Schedule finish unloading
-    scheduleEvent(Event{ finishUnloadingTime, truckID, EventType::FINISH_UNLOADING });
+    scheduleEvent(Process{ finishUnloadingTime, truckID, ProcessType::FINISH_UNLOADING });
 }
 
-void Simulation::handleFinishUnloading(const Event &evt) {
+void Simulation::handleFinishUnloading(const Process &evt) {
     int truckID = evt.truckID;
 
     trucks[truckID].addUnloadingTime(UNLOAD_TIME_MIN);
@@ -134,7 +134,7 @@ void Simulation::handleFinishUnloading(const Event &evt) {
     trucks[truckID].addMiningTime(miningDuration);
 
     int finishMiningTime = nextMiningStart + miningDuration;
-    scheduleEvent(Event{ finishMiningTime, truckID, EventType::FINISH_MINING });
+    scheduleEvent(Process{ finishMiningTime, truckID, ProcessType::FINISH_MINING });
 }
 
 int Simulation::findStationUsedForUnloading(int finishTime) {
