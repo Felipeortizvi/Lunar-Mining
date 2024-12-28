@@ -25,3 +25,7 @@ unload station.
 
 The simulation represents 72 hours of non-stop mining and must execute faster than
 real-time to provide timely analysis.
+
+## Compiling The Code
+
+g++ -Iinclude -o LunarSim     src/main.cpp     src/Simulation.cpp     src/MiningStation.cpp     src/MiningTruck.cpp
