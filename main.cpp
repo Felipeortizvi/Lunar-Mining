@@ -2,18 +2,16 @@
 #include "Simulation.h"
 
 int main(int argc, char** argv) {
-    // Default simulation settings
-    int nTrucks = 3;
-    int nStations = 2;
+    // You can modify the code here if you have the base argument
+    int nTrucks = 6;
+    int nStations = 3;
 
-    // Optionally parse from command line
-    // if (argc == 3) {
-    //     nTrucks   = std::stoi(argv[1]);
-    //     nStations = std::stoi(argv[2]);
-
-    //     nTrucks   = std::atoi(argv[1]);
-    //     nStations = std::atoi(argv[2]);
-    // }
+    // Allowing own amount of truck and station values to be modified here using args
+    //      ./LunarSim.exe 4 10      will execute 4 trucks, and 10 stations
+    if (argc == 3) {
+        nTrucks   = std::atoi(argv[1]);
+        nStations = std::atoi(argv[2]);
+    }
 
     std::cout << "Starting Lunar Helium-3 Mining Simulation\n";
     std::cout << "Number of Trucks: " << nTrucks << "\n";

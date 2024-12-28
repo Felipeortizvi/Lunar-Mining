@@ -9,19 +9,19 @@ using namespace std;
 Simulation::Simulation(int nTrucks, int nStations)
     : numTrucks(nTrucks), numStations(nStations), currentTime(0)
 {
-    // Seed the RNG with current time
+    // Seed Random Number Generator with current time
     rng.seed(static_cast<unsigned long>(chrono::system_clock::now().time_since_epoch().count()));
 
     // Create trucks
     trucks.reserve(numTrucks);
     for (int i = 0; i < numTrucks; ++i) {
-        trucks.emplace_back(i); // Insert value at the end of a vector
+        trucks.emplace_back(i); // Insert value at the end of the vector
     }
 
     // Create stations
     stations.reserve(numStations);
     for (int i = 0; i < numStations; ++i) {
-        stations.emplace_back(i); // Insert value at the end of a vector
+        stations.emplace_back(i); // Insert value at the end of the vector
     }
 }
 
@@ -152,7 +152,8 @@ int Simulation::findStationUsedForUnloading(int finishTime) {
 void Simulation::reportStatistics() {
     cout << "\n=== Lunar Mining Status Update ===\n";
     cout << "Total simulation time: " << currentTime
-              << " minutes (<= " << SIMULATION_DURATION_MINUTES << ")\n\n";
+         << " minutes / " << std::fixed << std::setprecision(2) << (currentTime / 60.0)
+         << " hours (<= " << SIMULATION_DURATION_MINUTES << ", 72 hours)\n\n";
 
     cout << "---- Truck Statistics ----\n";
     for (int i = 0; i < numTrucks; ++i) {
@@ -163,6 +164,7 @@ void Simulation::reportStatistics() {
                 << ", Travel Time = " << t.getTotalTravelTime()
                 << ", Waiting Time = " << t.getTotalWaitingTime()
                 << ", Unloading Time = " << t.getTotalUnloadingTime()
+                << ", Overall Time: " << t.overallTimeHours()
                 << "\n";
     }
 
@@ -175,5 +177,5 @@ void Simulation::reportStatistics() {
                 << ", Busy Until (final) = " << s.getBusyUntil()
                 << "\n";
     }
-    cout << "==========================\n";
+    cout << "\nSIMULATION COMPLETED\n";
 }

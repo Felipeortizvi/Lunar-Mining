@@ -1,4 +1,5 @@
 #include "MiningTruck.h"
+#include <cmath>
 
 MiningTruck::MiningTruck(int id) : truckID(id){}
 
@@ -44,4 +45,9 @@ int MiningTruck::getTotalUnloadingTime() const {
 
 int MiningTruck::getLoadsDelivered() const {
     return loadsDelivered;
+}
+
+double MiningTruck::overallTimeHours() const {
+    double totalTime = (totalMiningTime + totalTravelTime + totalWaitingTime + totalUnloadingTime) / 60.0;
+    return std::round(totalTime * 100.0) / 100.0; // Round to two decimal places
 }

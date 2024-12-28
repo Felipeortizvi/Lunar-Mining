@@ -20,6 +20,8 @@ public:
     int getTotalWaitingTime() const;
     int getTotalUnloadingTime() const;
     int getLoadsDelivered() const;
+    
+    double overallTimeHours() const;
 
 private:
     int truckID;
