@@ -1,27 +1,35 @@
 #ifndef MININGTRUCK_H
 #define MININGTRUCK_H
 
-#include <iostream>
-
-enum TruckState { Mining, Traveling, Unloading };
-
 class MiningTruck {
-    int id;
-    TruckState currentState;
-    int totalMiningTime;
-    int totalTravelingTime;
-    int totalUnloadingTime;
-    int miningDuration;
-
 public:
-    MiningTruck(int id);
+    explicit MiningTruck(int id);
 
-    void mine();
-    void travelToUnloadStation();
-    void unload();
-    TruckState getState() const;
-    void getStats() const;
-    int getMiningDuration() const;
+    int getTruckID() const;
+
+    // Statistics accumulation
+    void addMiningTime(int minutes);
+    void addTravelTime(int minutes);
+    void addWaitingTime(int minutes);
+    void addUnloadingTime(int minutes);
+    void incrementLoadsDelivered();
+
+    // Getters for final report
+    int getTotalMiningTime() const;
+    int getTotalTravelTime() const;
+    int getTotalWaitingTime() const;
+    int getTotalUnloadingTime() const;
+    int getLoadsDelivered() const;
+
+private:
+    int truckID;
+
+    // truck statistic values
+    int totalMiningTime   = 0;
+    int totalTravelTime   = 0;
+    int totalWaitingTime  = 0;
+    int totalUnloadingTime= 0;
+    int loadsDelivered    = 0;
 };
 
 #endif
