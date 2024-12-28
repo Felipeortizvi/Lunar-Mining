@@ -6,8 +6,10 @@ int main(int argc, char** argv) {
     int nTrucks = 6;
     int nStations = 3;
 
-    // Allowing own amount of truck and station values to be modified here using args
-    //      ./LunarSim.exe 4 10      will execute 4 trucks, and 10 stations
+    // Allows the user to specify the number of trucks and stations as CLI arguments.
+    // Sample run: 
+    //      ./LunarSim.exe 4 10
+    // This will run the simulation with 4 trucks and 10 stations.
     if (argc == 3) {
         nTrucks   = std::atoi(argv[1]);
         nStations = std::atoi(argv[2]);

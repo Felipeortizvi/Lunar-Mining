@@ -22,10 +22,10 @@ private:
     static const int SIMULATION_DURATION_MINUTES = 72 * 60;
 
     // Constants for mining times, travel times, unload times
-    static const int MIN_MINING_TIME_MIN = 60;   // 1 hour
-    static const int MAX_MINING_TIME_MIN = 300;  // 5 hours
-    static const int TRAVEL_TIME_MIN     = 30;
-    static const int UNLOAD_TIME_MIN     = 5;
+    static const int MIN_MINING_TIME_MIN = 60;      // 1 hour
+    static const int MAX_MINING_TIME_MIN = 300;     // 5 hours (5 * 60 min)
+    static const int TRAVEL_TIME_MIN     = 30;      // 30 minutes
+    static const int UNLOAD_TIME_MIN     = 5;       // 5 minutes 
 
     // Number of trucks and stations
     int numTrucks;
@@ -54,7 +54,7 @@ private:
     void handleArriveStation(const Process &evt);
     void handleFinishUnloading(const Process &evt);
 
-    
+
 
     // Helper method to find which station just finished unloading
     int findStationUsedForUnloading(int finishTime);

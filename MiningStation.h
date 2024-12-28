@@ -11,7 +11,7 @@ public:
     void setBusyUntil(int time);
     int getBusyUntil() const;
 
-    // Station-level statistics
+    // Station level statistics
     void addTimeBusy(int duration);
     void incrementLoadsHandled();
 
@@ -22,7 +22,7 @@ private:
     int stationID;
     int busyUntilTime = 0; // minute mark until which station is busy
 
-    // Stats
+    // Station stats
     int totalBusyTime = 0;
     int loadsHandled  = 0;
 };
