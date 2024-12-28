@@ -28,7 +28,7 @@ real-time to provide timely analysis.
 
 ## Compiling The Code
 
-`cd Lunar-Mining/build/`
+`cd ../Lunar-Mining/build/`
 
 `cmake ..`
 
