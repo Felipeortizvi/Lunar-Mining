@@ -28,29 +28,3 @@ target_link_libraries(lunar_mining_app
     PRIVATE
     Lunar-Mining
 )
-
-# # 7) Enable testing features in CMake
-# enable_testing()
-
-# # 8) Find Google Test (if installed system-wide or via vcpkg)
-# #    If GTest is not found, you will need to manually provide its path or add_subdirectory.
-# find_package(GTest CONFIG REQUIRED) 
-# # If not using CONFIG mode, you might do: find_package(GTest REQUIRED)
-
-# # 9) Create a test executable that contains all your test files
-# add_executable(lunar_mining_tests
-#     tests/test_truck.cpp
-#     tests/test_station.cpp
-#     tests/test_simulation.cpp
-# )
-
-# # 10) Link the same library plus GTest libs
-# target_link_libraries(lunar_mining_tests
-#     PRIVATE
-#     lunar_mining
-#     GTest::gtest
-#     GTest::gtest_main
-# )
-
-# # 11) Register the test executable with CTest so you can run "ctest"
-# add_test(NAME AllTests COMMAND lunar_mining_tests)

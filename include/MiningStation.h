@@ -1,30 +1,39 @@
-#ifndef STATION_H
-#define STATION_H
+#ifndef MININGSTATION_H
+#define MININGSTATION_H
 
+/// A class representing a single mining station that can service unloading operations.
 class Station {
 public:
+    /// Constructs a Station with a given ID.
     explicit Station(int id);
 
-    int getStationID() const;
+    /// Returns this station's ID.
+    int GetStationID_() const;
 
-    // Busy until this time means the station is occupied until busyUntilTime
-    void setBusyUntil(int time);
-    int getBusyUntil() const;
+    /// Sets the minute mark until which this station is busy.
+    void SetBusyUntil_(int time);
 
-    // Station level statistics
-    void addTimeBusy(int duration);
-    void incrementLoadsHandled();
+    /// Returns the minute mark until which this station is busy.
+    int GetBusyUntil_() const;
 
-    int getTotalBusyTime() const;
-    int getLoadsHandled() const;
+    /// Adds the specified duration to this station's total busy time.
+    void AddTimeBusy_(int duration);
+
+    /// Increments the number of loads handled by this station.
+    void IncrementLoadsHandled_();
+
+    /// Returns this station's total busy time in minutes.
+    int GetTotalBusyTime_() const;
+
+    /// Returns the total loads handled by this station.
+    int GetLoadsHandled_() const;
 
 private:
-    int stationID;
-    int busyUntilTime = 0; // minute mark until which station is busy
+    int stationid_;         ///< Unique ID for this station.
+    int busyuntiltime_{0};  ///< Minute mark until which the station is busy.
 
-    // Station stats
-    int totalBusyTime = 0;
-    int loadsHandled  = 0;
+    int totalBusyTime_{0};  ///< Accumulated busy time of this station (minutes).
+    int loadsHandled_{0};   ///< Number of loads handled by this station.
 };
 
-#endif
+#endif 

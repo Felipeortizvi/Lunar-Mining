@@ -1,37 +1,57 @@
 #ifndef MININGTRUCK_H
 #define MININGTRUCK_H
 
+/// A class representing a single mining truck in the lunar mining simulation.
 class MiningTruck {
+
 public:
+    /// Constructs a MiningTruck with a given ID.
     explicit MiningTruck(int id);
 
-    int getTruckID() const;
+    /// Returns this truck's ID.
+    int GetTruckID_() const;
 
-    // Statistics accumulation
-    void addMiningTime(int minutes);
-    void addTravelTime(int minutes);
-    void addWaitingTime(int minutes);
-    void addUnloadingTime(int minutes);
-    void incrementLoadsDelivered();
+    /// Adds to this truck's accumulated mining time (in minutes).
+    void AddMiningTime_(int minutes);
 
-    // Getters for final report
-    int getTotalMiningTime() const;
-    int getTotalTravelTime() const;
-    int getTotalWaitingTime() const;
-    int getTotalUnloadingTime() const;
-    int getLoadsDelivered() const;
-    
-    double overallTimeHours() const;
+    /// Adds to this truck's accumulated travel time (in minutes).
+    void AddTravelTime_(int minutes);
+
+    /// Adds to this truck's accumulated waiting time (in minutes).
+    void AddWaitingTime_(int minutes);
+
+    /// Adds to this truck's accumulated unloading time (in minutes).
+    void AddUnloadingTime_(int minutes);
+
+    /// Increments the count of loads delivered by this truck.
+    void IncrementLoadsDelivered_();
+
+    /// Returns the total mining time this truck has spent (minutes).
+    int GetTotalMiningTime_() const;
+
+    /// Returns the total travel time this truck has spent (minutes).
+    int GetTotalTravelTime_() const;
+
+    /// Returns the total waiting time this truck has spent (minutes).
+    int GetTotalWaitingTime_() const;
+
+    /// Returns the total unloading time this truck has spent (minutes).
+    int GetTotalUnloadingTime_() const;
+
+    /// Returns how many loads this truck has delivered.
+    int GetLoadsDelivered_() const;
+
+    /// Returns this truck's overall operating time (in hours), rounded to two decimals.
+    double OverallTimeHours_() const;
 
 private:
-    int truckID;
+    int truckid_;                ///< The unique ID for this truck
 
-    // truck statistic values
-    int totalMiningTime   = 0;
-    int totalTravelTime   = 0;
-    int totalWaitingTime  = 0;
-    int totalUnloadingTime= 0;
-    int loadsDelivered    = 0;
+    int totalMiningTime_{0};     ///< Accumulated mining time in minutes
+    int totalTravelTime_{0};     ///< Accumulated travel time in minutes
+    int totalWaitingTime_{0};    ///< Accumulated waiting time in minutes
+    int totalUnloadingTime_{0};  ///< Accumulated unloading time in minutes
+    int loadsDelivered_{0};      ///< Number of loads delivered
 };
 
 #endif

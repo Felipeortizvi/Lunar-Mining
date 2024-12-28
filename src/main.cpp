@@ -3,7 +3,7 @@
 
 int main(int argc, char** argv) {
     // You can modify the code here if you have the base argument
-    int nTrucks = 6;
+    int nTrucks = 4;
     int nStations = 3;
 
     // Allows the user to specify the number of trucks and stations as CLI arguments.
@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 
     // Build Sim Object and Run
     Simulation sim(nTrucks, nStations);
-    sim.run();
+    sim.Run_();
 
     return 0;
 }

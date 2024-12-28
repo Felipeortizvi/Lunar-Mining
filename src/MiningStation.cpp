@@ -1,31 +1,33 @@
 #include "MiningStation.h"
 
-Station::Station(int id) : stationID(id){}
+/// Constructs a Station with the given ID.
+Station::Station(int id)
+    : stationid_(id) {}
 
-int Station::getStationID() const {
-    return stationID;
+int Station::GetStationID_() const {
+    return stationid_;
 }
 
-void Station::setBusyUntil(int time) {
-    busyUntilTime = time;
+void Station::SetBusyUntil_(int time) {
+    busyuntiltime_ = time;
 }
 
-int Station::getBusyUntil() const {
-    return busyUntilTime;
+int Station::GetBusyUntil_() const {
+    return busyuntiltime_;
 }
 
-void Station::addTimeBusy(int duration) {
-    totalBusyTime += duration;
+void Station::AddTimeBusy_(int duration) {
+    totalBusyTime_ += duration;
 }
 
-void Station::incrementLoadsHandled() {
-    loadsHandled++;
+void Station::IncrementLoadsHandled_() {
+    loadsHandled_++;
 }
 
-int Station::getTotalBusyTime() const {
-    return totalBusyTime;
+int Station::GetTotalBusyTime_() const {
+    return totalBusyTime_;
 }
 
-int Station::getLoadsHandled() const {
-    return loadsHandled;
+int Station::GetLoadsHandled_() const {
+    return loadsHandled_;
 }

@@ -9,58 +9,72 @@
 #include "MiningTruck.h"
 #include "MiningStation.h"
 
-// The Simulation class orchestrates the entire 72-hour mining operation.
+/// The Simulation class orchestrates the entire 72-hour mining operation.
 class Simulation {
 public:
+    /// Constructs the simulation with the specified number of trucks and stations.
     Simulation(int nTrucks, int nStations);
 
-    // Run the entire simulation (72 hours or until event queue empty)
-    void run();
+    /// Runs the entire simulation (72 hours or until the event queue is empty).
+    void Run_();
 
 private:
-    // Simulation duration in minutes: 72 hours = 4320 minutes
-    static const int SIMULATION_DURATION_MINUTES = 72 * 60;
+    /// The total simulation duration in minutes: 72 hours = 4320 minutes.
+    static const int SIMULATION_DURATION_MINUTES_ = 72 * 60;
 
-    // Constants for mining times, travel times, unload times
-    static const int MIN_MINING_TIME_MIN = 60;      // 1 hour
-    static const int MAX_MINING_TIME_MIN = 300;     // 5 hours (5 * 60 min)
-    static const int TRAVEL_TIME_MIN     = 30;      // 30 minutes
-    static const int UNLOAD_TIME_MIN     = 5;       // 5 minutes 
+    /// Constants for mining times, travel times, and unload times.
+    static const int MIN_MINING_TIME_MIN_ = 60;   ///< Minimum: 1 hour (60 minutes)
+    static const int MAX_MINING_TIME_MIN_ = 300;  ///< Maximum: 5 hours (300 minutes)
+    static const int TRAVEL_TIME_MIN_     = 30;   ///< Travel time: 30 minutes
+    static const int UNLOAD_TIME_MIN_     = 5;    ///< Unload time: 5 minutes
 
-    // Number of trucks and stations
-    int numTrucks;
-    int numStations;
+    /// The number of trucks in this simulation.
+    int numTrucks_;
 
-    // Current simulation time (minutes)
-    int currentTime;
+    /// The number of stations in this simulation.
+    int numStations_;
 
-    // Containers for trucks and stations
-    std::vector<MiningTruck> trucks;
-    std::vector<Station> stations;
+    /// The current simulation time (in minutes).
+    int currentTime_;
 
-    // Priority queue of events (min-heap by event time)
-    std::priority_queue<Process, std::vector<Process>, std::greater<Process>> eventQueue;
+    /// Random number generator for mining durations.
+    std::mt19937 rng_;
 
-    // Random number generator
-    std::mt19937 rng;
+    /// A container of mining trucks.
+    std::vector<MiningTruck> trucks_;
 
+    /// A container of mining stations.
+    std::vector<Station> stations_;
+
+    /// Priority queue of events (min-heap by event time).
+    /// (If you refactored MiningProcess to `namespace MiningProcess { struct Process_ {...} };`,
+    ///  you should replace `Process` with `MiningProcess::Process_` and `std::greater<Process_>`, etc.)
+    std::priority_queue<
+        MiningProcess::Process_,
+        std::vector<MiningProcess::Process_>,
+        std::greater<MiningProcess::Process_>
+> eventQueue_;
 private:
-    // Helper functions
-    void scheduleEvent(const Process &evt);
-    int getRandomMiningDuration();
+    /// Schedules a new event by pushing it into the priority queue.
+    void scheduleEvent_(const MiningProcess::Process_ &evt);
 
-    // Event handlers
-    void handleFinishMining(const Process &evt);
-    void handleArriveStation(const Process &evt);
-    void handleFinishUnloading(const Process &evt);
+    /// Returns a random mining duration between MIN_MINING_TIME_MIN_ and MAX_MINING_TIME_MIN_.
+    int getRandomMiningDuration_();
 
+    /// Handles the FINISH_MINING event for a truck.
+    void handleFinishMining_(const MiningProcess::Process_ &evt);
 
+    /// Handles the ARRIVE_STATION event for a truck.
+    void handleArriveStation_(const MiningProcess::Process_ &evt);
 
-    // Helper method to find which station just finished unloading
-    int findStationUsedForUnloading(int finishTime);
+    /// Handles the FINISH_UNLOADING event for a truck.
+    void handleFinishUnloading_(const MiningProcess::Process_ &evt);
 
-    // Final reporting
-    void reportStatistics();
+    /// Finds which station just finished unloading at the given time.
+    int findStationUsedForUnloading_(int finishTime);
+
+    /// Prints final statistics for all trucks and stations.
+    void reportStatistics_();
 };
 
-#endif
+#endif // SIMULATION_H

@@ -28,4 +28,10 @@ real-time to provide timely analysis.
 
 ## Compiling The Code
 
-g++ -Iinclude -o LunarSim     src/main.cpp     src/Simulation.cpp     src/MiningStation.cpp     src/MiningTruck.cpp
+`cd Lunar-Mining/build/`
+
+`cmake ..`
+
+`cmake --build`
+
+`./Debug/lunar_mining_app.exe`

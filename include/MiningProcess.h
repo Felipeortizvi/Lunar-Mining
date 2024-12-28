@@ -1,25 +1,25 @@
 #ifndef MININGPROCESS_H
 #define MININGPROCESS_H
 
-#include <functional>
+namespace MiningProcess {
 
-// Time is measured in minutes from the start of the simulation
-enum class ProcessType {
-    FINISH_MINING,
-    ARRIVE_STATION,
-    FINISH_UNLOADING
-};
+    enum class ProcessType_ {
+        FINISH_MINING,
+        ARRIVE_STATION,
+        FINISH_UNLOADING
+    };
 
-// We store Processes in a priority_queue.
-struct Process {
-    int time;       // When the event occurs (minutes since start)
-    int truckID;    // Which truck is affected
-    ProcessType type; // FINISH_MINING, ARRIVE_STATION, FINISH_UNLOADING
+    struct Process_ {
+        int Time_;         // When this process occurs (minutes since start)
+        int TruckID_;      // Which truck is affected
+        ProcessType_ Type_; 
 
-    // For priority_queue sorting: earliest event first
-    bool operator>(const Process &other) const {
-        return time > other.time;
-    }
-};
+        // Comparator for priority_queue (earliest event first)
+        bool operator>(const Process_ &other) const {
+            return Time_ > other.Time_;
+        }
+    };
 
-#endif
+} // namespace MiningProcess
+
+#endif // MININGPROCESS_H

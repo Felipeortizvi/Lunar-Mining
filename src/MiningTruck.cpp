@@ -1,53 +1,63 @@
 #include "MiningTruck.h"
-#include <cmath>
+#include <cmath>  // for std::round
 
-MiningTruck::MiningTruck(int id) : truckID(id){}
-
-int MiningTruck::getTruckID() const {
-    return truckID;
+/// Constructs a MiningTruck with the given ID.
+MiningTruck::MiningTruck(int id)
+    : truckid_(id)
+{
 }
 
-void MiningTruck::addMiningTime(int minutes) {
-    totalMiningTime += minutes;
+int MiningTruck::GetTruckID_() const {
+    return truckid_;
 }
 
-void MiningTruck::addTravelTime(int minutes) {
-    totalTravelTime += minutes;
+void MiningTruck::AddMiningTime_(int minutes) {
+    totalMiningTime_ += minutes;
 }
 
-void MiningTruck::addWaitingTime(int minutes) {
-    totalWaitingTime += minutes;
+void MiningTruck::AddTravelTime_(int minutes) {
+    totalTravelTime_ += minutes;
 }
 
-void MiningTruck::addUnloadingTime(int minutes) {
-    totalUnloadingTime += minutes;
+void MiningTruck::AddWaitingTime_(int minutes) {
+    totalWaitingTime_ += minutes;
 }
 
-void MiningTruck::incrementLoadsDelivered() {
-    loadsDelivered++;
+void MiningTruck::AddUnloadingTime_(int minutes) {
+    totalUnloadingTime_ += minutes;
 }
 
-int MiningTruck::getTotalMiningTime() const {
-    return totalMiningTime;
+void MiningTruck::IncrementLoadsDelivered_() {
+    loadsDelivered_++;
 }
 
-int MiningTruck::getTotalTravelTime() const {
-    return totalTravelTime;
+int MiningTruck::GetTotalMiningTime_() const {
+    return totalMiningTime_;
 }
 
-int MiningTruck::getTotalWaitingTime() const {
-    return totalWaitingTime;
+int MiningTruck::GetTotalTravelTime_() const {
+    return totalTravelTime_;
 }
 
-int MiningTruck::getTotalUnloadingTime() const {
-    return totalUnloadingTime;
+int MiningTruck::GetTotalWaitingTime_() const {
+    return totalWaitingTime_;
 }
 
-int MiningTruck::getLoadsDelivered() const {
-    return loadsDelivered;
+int MiningTruck::GetTotalUnloadingTime_() const {
+    return totalUnloadingTime_;
 }
 
-double MiningTruck::overallTimeHours() const {
-    double totalTime = (totalMiningTime + totalTravelTime + totalWaitingTime + totalUnloadingTime) / 60.0;
-    return std::round(totalTime * 100.0) / 100.0; // Round to two decimal places
+int MiningTruck::GetLoadsDelivered_() const {
+    return loadsDelivered_;
+}
+
+double MiningTruck::OverallTimeHours_() const {
+    // Sum all time (in minutes), then convert to hours
+    double totalMinutes = static_cast<double>(
+        totalMiningTime_ + totalTravelTime_ + totalWaitingTime_ + totalUnloadingTime_
+    );
+    double totalHours = totalMinutes / 60.0;
+
+    // Round to two decimal places
+    return std::round(totalHours * 100.0) / 100.0;
 }
