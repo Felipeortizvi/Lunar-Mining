@@ -18,10 +18,8 @@ Simulation::Simulation(int nTrucks, int nStations)
     , numStations_(nStations)
     , currentTime_(0)
 {
-    // Seed RNG with current system time
-    rng_.seed(static_cast<unsigned long>(
-        std::chrono::system_clock::now().time_since_epoch().count()
-    ));
+    // Seed random num generator with current system time
+    rng_.seed(static_cast<unsigned long>(std::chrono::system_clock::now().time_since_epoch().count()));
 
     // Create trucks
     trucks_.reserve(numTrucks_);
@@ -44,11 +42,7 @@ void Simulation::Run_() {
         trucks_[i].AddMiningTime_(miningDuration);
 
         // Schedule the initial FINISH_MINING event
-        scheduleEvent_(Process_{
-            miningDuration,          // Time_
-            i,                       // TruckID_
-            ProcessType_::FINISH_MINING
-        });
+        scheduleEvent_(Process_{miningDuration, i, ProcessType_::FINISH_MINING});
     }
 
     // Process events until we exceed 72 hours or the queue is empty
@@ -78,7 +72,6 @@ void Simulation::Run_() {
         }
     }
 
-    // Print final statistics
     reportStatistics_();
 }
 
@@ -153,13 +146,13 @@ void Simulation::handleFinishUnloading_(const Process_ &evt) {
     trucks_[truckID].AddUnloadingTime_(UNLOAD_TIME_MIN_);
     trucks_[truckID].IncrementLoadsDelivered_();
 
-    // Identify which station just finished unloading
+    // Identify avalable station
     int usedStationID = findStationUsedForUnloading_(evt.Time_);
     if (usedStationID != -1) {
         stations_[usedStationID].IncrementLoadsHandled_();
     }
 
-    // Travel back to mining site (30 min) then do random mining again
+    // Travel back to mining site (30 min) then do random mining time again
     trucks_[truckID].AddTravelTime_(TRAVEL_TIME_MIN_);
     int nextMiningStart = currentTime_ + TRAVEL_TIME_MIN_;
 
@@ -167,11 +160,7 @@ void Simulation::handleFinishUnloading_(const Process_ &evt) {
     trucks_[truckID].AddMiningTime_(miningDuration);
 
     int finishMiningTime = nextMiningStart + miningDuration;
-    scheduleEvent_(Process_{
-        finishMiningTime,
-        truckID,
-        ProcessType_::FINISH_MINING
-    });
+    scheduleEvent_(Process_{finishMiningTime, truckID, ProcessType_::FINISH_MINING});
 }
 
 /// Finds which station just finished unloading at the given time.
@@ -195,7 +184,6 @@ void Simulation::reportStatistics_() {
     cout << "---- Truck Statistics ----\n";
     for (int i = 0; i < numTrucks_; ++i) {
         const MiningTruck &t = trucks_[i];
-        // Display truck IDs as 1-based if desired
         cout << "Truck " << (t.GetTruckID_() + 1)
              << ": Loads Delivered = " << t.GetLoadsDelivered_()
              << ", Mining Time = " << t.GetTotalMiningTime_()
@@ -209,7 +197,6 @@ void Simulation::reportStatistics_() {
     cout << "\n---- Station Statistics ----\n";
     for (int i = 0; i < numStations_; ++i) {
         const Station &s = stations_[i];
-        // Display station IDs as 1-based if desired
         cout << "Station " << (s.GetStationID_() + 1)
              << ": Loads Handled = " << s.GetLoadsHandled_()
              << ", Total Busy Time = " << s.GetTotalBusyTime_()

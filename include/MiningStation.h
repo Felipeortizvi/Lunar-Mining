@@ -29,11 +29,11 @@ public:
     int GetLoadsHandled_() const;
 
 private:
-    int stationid_;         ///< Unique ID for this station.
-    int busyuntiltime_{0};  ///< Minute mark until which the station is busy.
+    int stationid_;         /// Unique ID for this station.
+    int busyuntiltime_{0};  /// Minute mark until which the station is busy.
 
-    int totalBusyTime_{0};  ///< Accumulated busy time of this station (minutes).
-    int loadsHandled_{0};   ///< Number of loads handled by this station.
+    int totalBusyTime_{0};  /// Accumulated busy time of this station (minutes).
+    int loadsHandled_{0};   /// Number of loads handled by this station.
 };
 
 #endif 

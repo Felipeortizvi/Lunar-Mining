@@ -52,7 +52,7 @@ int MiningTruck::GetLoadsDelivered_() const {
 }
 
 double MiningTruck::OverallTimeHours_() const {
-    // Sum all time (in minutes), then convert to hours
+    // Sum all time (in minutes) and then convert to hours
     double totalMinutes = static_cast<double>(
         totalMiningTime_ + totalTravelTime_ + totalWaitingTime_ + totalUnloadingTime_
     );
