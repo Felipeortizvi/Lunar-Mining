@@ -3,9 +3,7 @@
 
 /// Constructs a MiningTruck with the given ID.
 MiningTruck::MiningTruck(int id)
-    : truckid_(id)
-{
-}
+    : truckid_(id) {}
 
 int MiningTruck::GetTruckID_() const {
     return truckid_;

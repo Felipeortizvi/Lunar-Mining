@@ -19,7 +19,6 @@ namespace MiningProcess {
             return Time_ > other.Time_;
         }
     };
+}
 
-} // namespace MiningProcess
-
-#endif // MININGPROCESS_H
+#endif
