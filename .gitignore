@@ -1,0 +1,10 @@
+/build/
+*.vcxproj
+*.vcxproj.filters
+*.sln
+CMakeCache.txt
+conan*.bat
+conan*.cmake
+deactivate_*.bat
+*.pdb
+*.exe
