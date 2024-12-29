@@ -26,6 +26,16 @@ unload station.
 The simulation represents 72 hours of non-stop mining and must execute faster than
 real-time to provide timely analysis.
 
+## Run Executable Program
+
+`./LunarSim.exe`
+
+or
+
+`./LunarSim.exe 4 3` 
+
+Allows you to add arguments for 4 Trucks and 3 Stations.
+
 ## Compiling The Code
 
 `cd ../Lunar-Mining/build/`
