@@ -35,3 +35,23 @@ real-time to provide timely analysis.
 `cmake --build`
 
 `./Debug/lunar_mining_app.exe`
+
+## Updated Compilation Steps
+
+`cd build`
+
+`conan install .. --build=missing -s build_type=Debug`
+
+`cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Debug`
+
+`cmake --build .`
+
+## Run Tests
+
+`ctest --verbose`
+
+## Run Code
+
+`cd ../build/debug`
+
+`./lunar_mining_app.exe`

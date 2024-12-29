@@ -1,10 +1,11 @@
+// Tests the MiningTruck Class
 
 #include <gtest/gtest.h>
 #include "MiningTruck.h"
 
-// Basic construction and default values
+
 TEST(TruckTest, DefaultConstructor) {
-    MiningTruck t(0);  // truck ID = 0 for this test
+    MiningTruck t(0); 
 
     EXPECT_EQ(t.GetTruckID_(), 0);
     EXPECT_EQ(t.GetTotalMiningTime_(), 0);

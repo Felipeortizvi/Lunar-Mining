@@ -14,9 +14,7 @@ using std::numeric_limits;
 
 /// Constructs the simulation with the specified number of trucks and stations.
 Simulation::Simulation(int nTrucks, int nStations)
-    : numTrucks_(nTrucks)
-    , numStations_(nStations)
-    , currentTime_(0)
+    : numTrucks_(nTrucks), numStations_(nStations), currentTime_(0)
 {
     // Seed random num generator with current system time
     rng_.seed(static_cast<unsigned long>(std::chrono::system_clock::now().time_since_epoch().count()));

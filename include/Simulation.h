@@ -18,6 +18,11 @@ public:
     /// Runs the entire simulation (72 hours or until the event queue is empty).
     void Run_();
 
+protected:
+
+    /// Random number generator for mining durations.
+    std::mt19937 rng_;
+
 private:
     /// The total simulation duration in minutes: 72 hours = 4320 minutes.
     static const int SIMULATION_DURATION_MINUTES_ = 72 * 60;
@@ -37,9 +42,6 @@ private:
     /// The current simulation time (in minutes).
     int currentTime_;
 
-    /// Random number generator for mining durations.
-    std::mt19937 rng_;
-
     /// A container of mining trucks.
     std::vector<MiningTruck> trucks_;
 
@@ -50,10 +52,10 @@ private:
     /// (If you refactored MiningProcess to `namespace MiningProcess { struct Process_ {...} };`,
     ///  you should replace `Process` with `MiningProcess::Process_` and `std::greater<Process_>`, etc.)
     std::priority_queue<
-        MiningProcess::Process_,
-        std::vector<MiningProcess::Process_>,
-        std::greater<MiningProcess::Process_>
-> eventQueue_;
+        MiningProcess::Process_, 
+        std::vector<MiningProcess::Process_>, 
+        std::greater<MiningProcess::Process_>> eventQueue_;
+
 private:
     /// Schedules a new event by pushing it into the priority queue.
     void scheduleEvent_(const MiningProcess::Process_ &evt);
@@ -77,4 +79,4 @@ private:
     void reportStatistics_();
 };
 
-#endif // SIMULATION_H
+#endif

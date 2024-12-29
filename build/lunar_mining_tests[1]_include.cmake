@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/felip/Desktop/CodeProjects/Lunar-Mining/build/lunar_mining_tests[1]_tests.cmake")
+  include("C:/Users/felip/Desktop/CodeProjects/Lunar-Mining/build/lunar_mining_tests[1]_tests.cmake")
+else()
+  add_test(lunar_mining_tests_NOT_BUILT lunar_mining_tests_NOT_BUILT)
+endif()

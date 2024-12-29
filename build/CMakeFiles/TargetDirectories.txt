@@ -1,0 +1,6 @@
+C:/Users/felip/Desktop/CodeProjects/Lunar-Mining/build/CMakeFiles/Lunar-Mining.dir
+C:/Users/felip/Desktop/CodeProjects/Lunar-Mining/build/CMakeFiles/lunar_mining_app.dir
+C:/Users/felip/Desktop/CodeProjects/Lunar-Mining/build/CMakeFiles/lunar_mining_tests.dir
+C:/Users/felip/Desktop/CodeProjects/Lunar-Mining/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/felip/Desktop/CodeProjects/Lunar-Mining/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/felip/Desktop/CodeProjects/Lunar-Mining/build/CMakeFiles/ZERO_CHECK.dir
