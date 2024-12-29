@@ -1,9 +1,0 @@
-TruckTest.DefaultConstructor 3 0.00915537
-TruckTest.MiningTimeAccumulation 3 0.00862027
-TruckTest.AddOtherTimes 3 0.0086117
-TruckTest.LoadsDelivered 3 0.0074367
-StationTest.DefaultConstructor 3 0.0069488
-StationTest.BusyUntilLogic 3 0.00694197
-StationTest.StationStats 3 0.00976223
-SimulationTest.BasicRun 3 0.00788933
----
