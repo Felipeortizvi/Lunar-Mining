@@ -36,13 +36,15 @@ Execute the code with this command (defaults to 4 trucks, 3 stations):
 
 `./LunarSim.exe` (defaults to 4 trucks, 3 stations)
 
+![alt text](images/LunarSimulationExe.png)
+
 or
 
-Execute custom values of (m = 5) trucks, and (n = 6) stations:
+Execute custom values of (m = 5) trucks, and (n = 5) stations:
 
-`./LunarSim.exe 4 3` 
+`./LunarSim.exe 5 5` 
 
-![alt text](images/LunarSimulationExe.png)
+![alt text](images/LunarSimCustom.png)
 
 
 ## Design Choices, Styling Choices, and Considerations
