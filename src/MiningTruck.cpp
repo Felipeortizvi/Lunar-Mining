@@ -1,7 +1,7 @@
 #include "MiningTruck.h"
-#include <cmath>  // for std::round
+#include <cmath>
 
-/// Constructs a MiningTruck with the given ID.
+/// Mining Truck constructor
 MiningTruck::MiningTruck(int id)
     : truckid_(id) {}
 

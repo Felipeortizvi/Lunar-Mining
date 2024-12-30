@@ -1,6 +1,14 @@
 {
     "configurations": [
         {
+
+            "includePath": [
+                "${workspaceFolder}/**",                 
+                "${workspaceFolder}/src",               
+                "${workspaceFolder}/include",           
+                "${workspaceFolder}/build"          
+            ],
+
             "name": "Windows-MSVS",
             "compilerPath": "cl.exe",
             "compileCommands": "${workspaceFolder}/build/compile_commands.json",

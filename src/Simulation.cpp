@@ -57,7 +57,7 @@ void Simulation::Run_() {
         // Advance current simulation time
         currentTime_ = evt.Time_;
 
-        // Dispatch to the appropriate event handler
+        // Switch case to the appropriate event handler
         switch (evt.Type_) {
             case ProcessType_::FINISH_MINING:
                 handleFinishMining_(evt);
@@ -94,11 +94,7 @@ void Simulation::handleFinishMining_(const Process_ &evt) {
 
     // After traveling, schedule ARRIVE_STATION event
     int arrivalTime = currentTime_ + TRAVEL_TIME_MIN_;
-    scheduleEvent_(Process_{
-        arrivalTime,
-        truckID,
-        ProcessType_::ARRIVE_STATION
-    });
+    scheduleEvent_(Process_{arrivalTime, truckID, ProcessType_::ARRIVE_STATION});
 }
 
 /// Handles the ARRIVE_STATION event for a truck.

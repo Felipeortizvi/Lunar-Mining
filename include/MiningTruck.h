@@ -46,11 +46,10 @@ public:
 
 private:
     int truckid_;                /// The unique ID for this truck
-
-    int totalMiningTime_{0};     /// Accumulated mining time in minutes
-    int totalTravelTime_{0};     /// Accumulated travel time in minutes
-    int totalWaitingTime_{0};    /// Accumulated waiting time in minutes
-    int totalUnloadingTime_{0};  /// Accumulated unloading time in minutes
+    int totalMiningTime_{0};     /// Total mining time in minutes
+    int totalTravelTime_{0};     /// Total travel time in minutes
+    int totalWaitingTime_{0};    /// Total waiting time in minutes
+    int totalUnloadingTime_{0};  /// Total unloading time in minutes
     int loadsDelivered_{0};      /// Number of loads delivered
 };
 

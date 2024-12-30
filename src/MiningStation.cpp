@@ -1,6 +1,6 @@
 #include "MiningStation.h"
 
-/// Constructs a Station with the given ID.
+/// Minining station constructor
 Station::Station(int id)
     : stationid_(id) {}
 
