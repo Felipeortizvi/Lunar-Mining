@@ -58,7 +58,12 @@ or
 
 ## Run Tests
 
+For a simple run through of tests:
+`ctest` 
+
+For a more detailed analysis of tests:
 `ctest --verbose`
+
 
 ## Run Code
 
