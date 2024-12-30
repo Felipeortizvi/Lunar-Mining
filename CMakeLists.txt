@@ -13,6 +13,7 @@ if(POLICY CMP0091)
   cmake_policy(SET CMP0091 NEW)
 endif()
 
+# Make c++ 17 standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -30,6 +31,7 @@ target_include_directories(Lunar-Mining
     ${CMAKE_SOURCE_DIR}/include
 )
 
+# Add executable
 add_executable(lunar_mining_app
     src/main.cpp
 )
@@ -41,13 +43,14 @@ target_link_libraries(lunar_mining_app PRIVATE
     Lunar-Mining
 )
 
-
+# Allows us to do testing for code
 enable_testing()
 find_package(GTest REQUIRED CONFIG)
 
 message(STATUS "GTest include dirs: ${GTest_INCLUDE_DIRS}")
 message(STATUS "GTest libraries: ${GTest_LIBRARIES}")
 
+# Add executables
 add_executable(lunar_mining_tests
     tests/test_MiningTruck.cpp
     tests/test_MiningStation.cpp
@@ -63,5 +66,6 @@ target_link_libraries(lunar_mining_tests PRIVATE
     GTest::gtest_main
 )
 
+# Make googletests accessible
 include(GoogleTest)
 gtest_discover_tests(lunar_mining_tests)
