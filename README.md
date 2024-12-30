@@ -57,6 +57,13 @@ Execute custom values of (m = 5) trucks, and (n = 5) stations:
 - **Process Queue:** Utilized a priority queue (`std::priority_queue`) to efficiently process events based on their scheduled times.
 
 `std::priority_queue<MiningProcess::Process_, std::vector<MiningProcess::Process_>, std::greater<MiningProcess::Process_>> eventQueue_;`
+
+**Time_:** The scheduled time for the event (in minutes).
+
+**TruckID_:** The identifier of the truck involved in the event.
+
+**Type_:** The type of event (e.g., FINISH_MINING, ARRIVE_STATION, FINISH_UNLOADING).
+
 - **Efficiency Considerations:** I considered using smart pointers for events to avoid copies, but since each process is small, copying is simpler and efficient enough. If I were to scale up this simulation, i’d switch to std::shared_ptr<Process>.
 
 ## Dependencies
