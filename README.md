@@ -56,6 +56,7 @@ The Simulation class contains instances of both Station and MiningTruck, using a
 Also note, each class has header files which create public, private, and protected variables and methods. 
 
 **Public methods/variables:** Uppercase first letter and underscore at the end, e.g. `GetTruckID_()`.
+
 **Private methods/variables:** Lowercase and underscore at the end, e.g. `truckid_`.
 
 I implemented a **Priority Queue** to efficiently retrieve the next logic to process based on the scheduled time.
@@ -70,9 +71,9 @@ Each event is encapsulated within a Process_ object, which includes:
 
 **Type_:** The type of event (e.g., FINISH_MINING, ARRIVE_STATION, FINISH_UNLOADING).
 
-Trailing Underscore convention highlights an internal method and private helper methods. 
+**Trailing Underscore convention** highlights internal methods amd private helper methods. 
 
-I considered using smart pointers for events to avoid copies, but since each process is small, copying is simpler and efficient enough. If I were to scale up this simulation, I’d switch to std::shared_ptr<Process>.
+I considered using smart pointers for events to avoid copies, but since each process is small, copying is simpler and efficient enough. If I were to scale up this simulation, i’d switch to std::shared_ptr<Process>.
 
 ## Dependencies
 
