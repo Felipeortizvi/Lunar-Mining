@@ -166,7 +166,7 @@ void Simulation::handleFinishUnloading_(const Process_ &evt) {
 }
 
 int Simulation::findStationUsedForUnloading_(int finishTime) {
-    /* Finds which station just finished unloading at the given time. */
+    // Finds which station just finished unloading at the given time.
 
     for (size_t i = 0; i < stations_.size(); ++i) {
         if (stations_[i].GetBusyUntil_() == finishTime) {
@@ -178,7 +178,7 @@ int Simulation::findStationUsedForUnloading_(int finishTime) {
 
 
 void Simulation::reportStatistics_() {
-    /* Prints final statistics for all trucks and stations. */
+    // Prints final statistics for all trucks and stations.
 
     cout << "\n=== Lunar Mining Simulation Report ===\n";
     cout << "Total simulation time: " << currentTime_ << " minutes / "
