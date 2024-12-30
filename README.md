@@ -49,8 +49,8 @@ Execute custom values of (m = 5) trucks, and (n = 5) stations:
 
 ## Design Choices and Considerations
 
-- **Object-Oriented Design:** Implemented three primary classes—`MiningTruck`, `MiningStation`, and `Simulation`—to encapsulate distinct functionalities.
-- **Composition Relationship:** The `Simulation` class has instances of `MiningTruck` and `MiningStation`, managing their interactions and lifecycle.
+- **Object-Oriented Design:** Implemented three primary classes—`MiningTruck`, `MiningStation`, and `Simulation` all which have distinct functionalities.
+- **Composition Relationship:** The `Simulation` class has instances of `MiningTruck` and `MiningStation`, managing their interactions. The Simulation class contains instances of both Station and MiningTruck, using a composition relationship where Simulation is created of these objects.
 - **Naming Conventions:** 
   - **Public Methods/Variables:** Uppercase first letter with a trailing underscore (e.g., `GetTruckID_()`).
   - **Private Methods/Variables:** Lowercase with a trailing underscore (e.g., `truckid_`).
