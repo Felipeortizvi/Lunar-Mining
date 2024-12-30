@@ -17,8 +17,8 @@ station can handle one truck at a time.
 
 ## Simulation Requirements:
 
-The simulation must be configurable to accommodate various numbers of mining trucks (n)
-and unload stations (m).
+The simulation must be configurable to accommodate various numbers of mining trucks (m)
+and unload stations (n).
 
 Calculate and report statistics for the performance and efficiency of each mining truck and
 unload station.
@@ -28,13 +28,22 @@ real-time to provide timely analysis.
 
 ## Run Executable Program
 
+Go to `build/` directory within the project: 
+
 `cd build`
 
-`./LunarSim.exe`
+Execute the code with this command (defaults to 4 trucks, 3 stations):
+
+`./LunarSim.exe` (defaults to 4 trucks, 3 stations)
 
 or
 
-`./LunarSim.exe 4 3`  eg. Arguement for n = 4 Trucks, and m = 3 Stations.
+Execute custom values of (m = 5) trucks, and (n = 6) stations:
+
+`./LunarSim.exe 4 3` 
+
+![alt text](images/LunarSimulationExe.png)
+
 
 ## Design Choices, Styling Choices, and Considerations
 
@@ -45,20 +54,31 @@ Private methods/variables: Lowercase and underscore at the end, e.g. `truckid_`.
 
 I implemented a Priority Queue to efficiently retrieve the next logic to process based on the scheduled time.
 
-`std::priority_queue<MiningProcess::Process_, std::vector<MiningProcess::Process_>,std::greater<MiningProcess::Process_>> eventQueue_;`
+`std::priority_queue<MiningProcess::Process_, std::vector<MiningProcess::Process_>, std::greater<MiningProcess::Process_>> eventQueue_;`
 
 Each event is encapsulated within a Process_ object, which includes:
 
 Time_: The scheduled time for the event (in minutes).
+
 TruckID_: The identifier of the truck involved in the event.
+
 Type_: The type of event (e.g., FINISH_MINING, ARRIVE_STATION, FINISH_UNLOADING).
 
+Trailing Underscore convention highlights an internal method and private helper methods. 
 
 I considered using smart pointers for events to avoid copies, but since each process is small, copying is simpler and efficient enough. If I were to scale up this simulation, I’d switch to std::shared_ptr<Process>.
 
 ## Dependencies
 
 The project uses Conan for dependency management and Google Test for unit testing.
+
+## Prerequisites For Conan
+
+Ensure the following tools are installed on your system:
+
+CMake: Version 3.15 or higher
+
+Conan: Version 2.x
 
 
 ## Compiling The Code For Testing (Using Conan)
@@ -83,8 +103,4 @@ Execute the code tests with this command:
 
 `./Debug/lunar_mining_tests.exe` 
 
-For a simple run through of tests:
-`ctest` 
-
-For a more detailed analysis of tests:
-`ctest --verbose`
+![alt text](images/SimulationTests.png)
