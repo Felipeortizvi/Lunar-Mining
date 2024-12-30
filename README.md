@@ -26,6 +26,16 @@ unload station.
 The simulation represents 72 hours of non-stop mining and must execute faster than
 real-time to provide timely analysis.
 
+## Run Executable Program
+
+`cd build`
+
+`./LunarSim.exe`
+
+or
+
+`./LunarSim.exe 4 3`  eg. Arguement for n = 4 Trucks, and m = 3 Stations.
+
 ## Design Choices, Styling Choices, and Considerations
 
 I designed 3 classes: `MiningTruck`, `MiningStation`, and `Simulation` to create this project. Each class has header files which create public, private, and protected variables and methods. 
@@ -37,7 +47,7 @@ I implemented a Priority Queue to efficiently retrieve the next logic to process
 
 `std::priority_queue<MiningProcess::Process_, std::vector<MiningProcess::Process_>,std::greater<MiningProcess::Process_>> eventQueue_;`
 
-Process Representation: Each event is encapsulated within a Process_ object, which includes:
+Each event is encapsulated within a Process_ object, which includes:
 
 Time_: The scheduled time for the event (in minutes).
 TruckID_: The identifier of the truck involved in the event.
@@ -50,15 +60,6 @@ I considered using smart pointers for events to avoid copies, but since each pro
 
 The project uses Conan for dependency management and Google Test for unit testing.
 
-## Run Executable Program
-
-`cd build`
-
-`./LunarSim.exe`
-
-or
-
-`./LunarSim.exe 4 3`  eg. Arguement for n = 4 Trucks, and m = 3 Stations.
 
 ## Compiling The Code For Testing (Using Conan)
 
