@@ -12,6 +12,7 @@ TEST(StationTest, DefaultConstructor) {
     EXPECT_EQ(s.GetLoadsHandled_(), 0);
 }
 
+// Tests Set busy time for stations if it increments properly
 TEST(StationTest, BusyUntilLogic) {
     Station s(1);
 
