@@ -40,7 +40,7 @@ Execute the code with this command (defaults to 4 trucks, 3 stations):
 
 or
 
-Execute custom values of (m = 5) trucks, and (n = 5) stations:
+Execute custom values of (m) trucks, and (n) stations:
 
 `./LunarSim.exe 5 5` 
 
