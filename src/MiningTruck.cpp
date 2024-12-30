@@ -1,7 +1,7 @@
 #include "MiningTruck.h"
 #include <cmath>
 
- // Mining Truck constructor
+ // Mining Truck constructor 
 MiningTruck::MiningTruck(int id) : truckid_(id) {}
 
 int MiningTruck::GetTruckID_() const {
