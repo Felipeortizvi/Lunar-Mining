@@ -1,6 +1,6 @@
 #include "MiningStation.h"
 
-/* Minining station constructor */
+// Minining station constructor
 Station::Station(int id) : stationid_(id) {}
 
 int Station::GetStationID_() const {

@@ -16,7 +16,7 @@ using std::numeric_limits;
 Simulation::Simulation(int nTrucks, int nStations)
     : numTrucks_(nTrucks), numStations_(nStations), currentTime_(0)
     
-    /* Constructs the simulation with the specified number of trucks and stations. */
+    //Constructs the simulation with the specified number of trucks and stations. 
 
 {
     // Seed random num generator with current system time
@@ -36,7 +36,7 @@ Simulation::Simulation(int nTrucks, int nStations)
 }
 
 void Simulation::Run_() {
-    /* Runs the entire simulation (72 hours or until the event queue is empty). */
+    // Runs the entire simulation (72 hours or until the event queue is empty).
 
     // Initialize trucks with random mining finish events
     for (int i = 0; i < numTrucks_; ++i) {
@@ -78,20 +78,20 @@ void Simulation::Run_() {
 }
 
 void Simulation::scheduleEvent_(const Process_ &evt) {
-    /* Schedules a new event by pushing it into the priority queue. */
+    // Schedules a new event by pushing it into the priority queue.
 
     eventQueue_.push(evt);
 }
 
 int Simulation::getRandomMiningDuration_() {
-    /* Returns a random mining duration between 60 and 300 minutes. */
+    // Returns a random mining duration between 60 and 300 minutes.
 
     std::uniform_int_distribution<int> dist(MIN_MINING_TIME_MIN_, MAX_MINING_TIME_MIN_);
     return dist(rng_);
 }
 
 void Simulation::handleFinishMining_(const Process_ &evt) {
-    /* Handles the FINISH_MINING event for a truck. */
+    // Handles the FINISH_MINING event for a truck.
 
     int truckID = evt.TruckID_;
 
@@ -104,7 +104,7 @@ void Simulation::handleFinishMining_(const Process_ &evt) {
 }
 
 void Simulation::handleArriveStation_(const Process_ &evt) {
-    /* Handles the ARRIVE_STATION event for a truck. */
+    //Handles the ARRIVE_STATION event for a truck.
 
     int truckID = evt.TruckID_;
 
@@ -141,7 +141,7 @@ void Simulation::handleArriveStation_(const Process_ &evt) {
 }
 
 void Simulation::handleFinishUnloading_(const Process_ &evt) {
-    /* Handles the FINISH_UNLOADING event for a truck. */
+    //Handles the FINISH_UNLOADING event for a truck.
 
     int truckID = evt.TruckID_;
 
