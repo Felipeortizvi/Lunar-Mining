@@ -6,7 +6,9 @@
                 "${workspaceFolder}/**",                 
                 "${workspaceFolder}/src",               
                 "${workspaceFolder}/include",           
-                "${workspaceFolder}/build"          
+                "${workspaceFolder}/build",
+                "${workspaceFolder}/tests"
+
             ],
 
             "name": "Windows-MSVS",

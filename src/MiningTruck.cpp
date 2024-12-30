@@ -1,9 +1,8 @@
 #include "MiningTruck.h"
 #include <cmath>
 
-/// Mining Truck constructor
-MiningTruck::MiningTruck(int id)
-    : truckid_(id) {}
+ /* Mining Truck constructor */
+MiningTruck::MiningTruck(int id) : truckid_(id) {}
 
 int MiningTruck::GetTruckID_() const {
     return truckid_;
@@ -50,7 +49,8 @@ int MiningTruck::GetLoadsDelivered_() const {
 }
 
 double MiningTruck::OverallTimeHours_() const {
-    // Sum all time (in minutes) and then convert to hours
+    /* Sum all time (in minutes) and then convert to hours */
+    
     double totalMinutes = static_cast<double>(
         totalMiningTime_ + totalTravelTime_ + totalWaitingTime_ + totalUnloadingTime_
     );

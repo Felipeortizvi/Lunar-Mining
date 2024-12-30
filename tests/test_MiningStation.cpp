@@ -18,7 +18,7 @@ TEST(StationTest, BusyUntilLogic) {
     s.SetBusyUntil_(100);
     EXPECT_EQ(s.GetBusyUntil_(), 100);
 
-    // Overwrite busy time
+    // Set new busy time
     s.SetBusyUntil_(200);
     EXPECT_EQ(s.GetBusyUntil_(), 200);
 }

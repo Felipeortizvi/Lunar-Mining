@@ -13,9 +13,11 @@ using std::fixed;
 using std::setprecision;
 using std::numeric_limits;
 
-/// Constructs the simulation with the specified number of trucks and stations.
 Simulation::Simulation(int nTrucks, int nStations)
     : numTrucks_(nTrucks), numStations_(nStations), currentTime_(0)
+    
+    /* Constructs the simulation with the specified number of trucks and stations. */
+
 {
     // Seed random num generator with current system time
     rng_.seed(static_cast<unsigned long>(std::chrono::system_clock::now().time_since_epoch().count()));
@@ -33,8 +35,9 @@ Simulation::Simulation(int nTrucks, int nStations)
     }
 }
 
-/// Runs the entire simulation (72 hours or until the event queue is empty).
 void Simulation::Run_() {
+    /* Runs the entire simulation (72 hours or until the event queue is empty). */
+
     // Initialize trucks with random mining finish events
     for (int i = 0; i < numTrucks_; ++i) {
         int miningDuration = getRandomMiningDuration_();
@@ -74,19 +77,22 @@ void Simulation::Run_() {
     reportStatistics_();
 }
 
-/// Schedules a new event by pushing it into the priority queue.
 void Simulation::scheduleEvent_(const Process_ &evt) {
+    /* Schedules a new event by pushing it into the priority queue. */
+
     eventQueue_.push(evt);
 }
 
-/// Returns a random mining duration between 60 and 300 minutes.
 int Simulation::getRandomMiningDuration_() {
+    /* Returns a random mining duration between 60 and 300 minutes. */
+
     std::uniform_int_distribution<int> dist(MIN_MINING_TIME_MIN_, MAX_MINING_TIME_MIN_);
     return dist(rng_);
 }
 
-/// Handles the FINISH_MINING event for a truck.
 void Simulation::handleFinishMining_(const Process_ &evt) {
+    /* Handles the FINISH_MINING event for a truck. */
+
     int truckID = evt.TruckID_;
 
     // The truck travels to the station (30 min)
@@ -97,8 +103,9 @@ void Simulation::handleFinishMining_(const Process_ &evt) {
     scheduleEvent_(Process_{arrivalTime, truckID, ProcessType_::ARRIVE_STATION});
 }
 
-/// Handles the ARRIVE_STATION event for a truck.
 void Simulation::handleArriveStation_(const Process_ &evt) {
+    /* Handles the ARRIVE_STATION event for a truck. */
+
     int truckID = evt.TruckID_;
 
     // Find the earliest available station
@@ -133,15 +140,16 @@ void Simulation::handleArriveStation_(const Process_ &evt) {
     });
 }
 
-/// Handles the FINISH_UNLOADING event for a truck.
 void Simulation::handleFinishUnloading_(const Process_ &evt) {
+    /* Handles the FINISH_UNLOADING event for a truck. */
+
     int truckID = evt.TruckID_;
 
     // Truck finished unloading
     trucks_[truckID].AddUnloadingTime_(UNLOAD_TIME_MIN_);
     trucks_[truckID].IncrementLoadsDelivered_();
 
-    // Identify avalable station
+    // Identify available station
     int usedStationID = findStationUsedForUnloading_(evt.Time_);
     if (usedStationID != -1) {
         stations_[usedStationID].IncrementLoadsHandled_();
@@ -158,8 +166,9 @@ void Simulation::handleFinishUnloading_(const Process_ &evt) {
     scheduleEvent_(Process_{finishMiningTime, truckID, ProcessType_::FINISH_MINING});
 }
 
-/// Finds which station just finished unloading at the given time.
 int Simulation::findStationUsedForUnloading_(int finishTime) {
+    /* Finds which station just finished unloading at the given time. */
+
     for (size_t i = 0; i < stations_.size(); ++i) {
         if (stations_[i].GetBusyUntil_() == finishTime) {
             return static_cast<int>(i);
@@ -168,8 +177,10 @@ int Simulation::findStationUsedForUnloading_(int finishTime) {
     return -1;
 }
 
-/// Prints final statistics for all trucks and stations.
+
 void Simulation::reportStatistics_() {
+    /* Prints final statistics for all trucks and stations. */
+
     cout << "\n=== Lunar Mining Simulation Report ===\n";
     cout << "Total simulation time: " << currentTime_ << " minutes / "
          << fixed << setprecision(2) << (currentTime_ / 60.0)

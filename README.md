@@ -36,19 +36,35 @@ or
 
 `./LunarSim.exe 4 3`  eg. Arguement for n = 4 Trucks, and m = 3 Stations.
 
-## Compiling The Code
+## Design Choices, Styling Choices, and Considerations
+
+I designed 3 classes: `MiningTruck`, `MiningStation`, and `Simulation` to create this project. Each class has header files which create public, private, and protected variables and methods. 
+
+Public methods/variables: Uppercase first letter and underscore at the end, e.g. `GetTruckID_()`.
+Private methods/variables: Lowercase and underscore at the end, e.g. `truckid_`.
+
+I implemented a Priority Queue to efficiently retrieve the next logic to process based on the scheduled time.
+
+`std::priority_queue<MiningProcess::Process_, `
+`std::vector<MiningProcess::Process_>,`
+`std::greater<MiningProcess::Process_>> eventQueue_;`
+
+Process Representation: Each event is encapsulated within a Process_ object, which includes:
+
+Time_: The scheduled time for the event (in minutes).
+TruckID_: The identifier of the truck involved in the event.
+Type_: The type of event (e.g., FINISH_MINING, ARRIVE_STATION, FINISH_UNLOADING).
+
+
+I considered using smart pointers for events to avoid copies, but since each process is small, copying is simpler and efficient enough. If I were to scale up this simulation, I’d switch to std::shared_ptr<Process>.
+
+## Dependencies
+
+The project uses Conan for dependency management and Google Test for unit testing.
+
+## Compiling The Code For Testing (Using Conan)
 
 `cd ../Lunar-Mining/build/`
-
-`cmake ..`
-
-`cmake --build`
-
-`./Debug/lunar_mining_app.exe`
-
-## Updated Compilation Steps
-
-`cd build`
 
 `conan install .. --build=missing -s build_type=Debug`
 
@@ -56,17 +72,20 @@ or
 
 `cmake --build .`
 
-## Run Tests
+Execute the code with this command (defaults to 4 trucks, 3 stations):
+
+`./Debug/lunar_mining_app.exe` 
+
+Execute custom values of (m = 5) trucks, and (n = 6) stations:
+
+`./Debug/lunar_mining_app.exe 5 6` 
+
+Execute the code tests with this command:
+
+`./Debug/lunar_mining_tests.exe` 
 
 For a simple run through of tests:
 `ctest` 
 
 For a more detailed analysis of tests:
 `ctest --verbose`
-
-
-## Run Code
-
-`cd ../build/debug`
-
-`./lunar_mining_app.exe`

@@ -10,8 +10,8 @@ namespace MiningProcess {
     };
 
     struct Process_ {
-        int Time_;         // When this process occurs (minutes since start)
-        int TruckID_;      // Which truck is affected
+        int Time_;              // When this process occurs (minutes since start)
+        int TruckID_;           // Which truck is affected
         ProcessType_ Type_; 
 
         // Comparator for priority_queue (earliest event first)
