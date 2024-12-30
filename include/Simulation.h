@@ -49,8 +49,6 @@ private:
     std::vector<Station> stations_;
 
     /// Priority queue of events (min-heap by event time).
-    /// (If you refactored MiningProcess to `namespace MiningProcess { struct Process_ {...} };`,
-    ///  you should replace `Process` with `MiningProcess::Process_` and `std::greater<Process_>`, etc.)
     std::priority_queue<
         MiningProcess::Process_, 
         std::vector<MiningProcess::Process_>, 

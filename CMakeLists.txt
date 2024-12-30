@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-# If on a newer CMake, ensure we enable this policy (for MSVC runtime library configuration)
+# If on a newer CMake, we enable this policy (for MSVC runtime library configuration)
 if(POLICY CMP0091)
   cmake_policy(SET CMP0091 NEW)
 endif()
@@ -11,9 +11,6 @@ project(LunarMiningProject VERSION 1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# ------------------------------------------------------------------------------
-# Core library: Lunar-Mining
-# ------------------------------------------------------------------------------
 add_library(Lunar-Mining
     src/MiningTruck.cpp
     src/MiningStation.cpp
@@ -25,9 +22,6 @@ target_include_directories(Lunar-Mining PRIVATE
     ${CMAKE_SOURCE_DIR}/include
 )
 
-# ------------------------------------------------------------------------------
-# Main application executable: lunar_mining_app
-# ------------------------------------------------------------------------------
 add_executable(lunar_mining_app
     src/main.cpp
 )
@@ -40,9 +34,6 @@ target_link_libraries(lunar_mining_app PRIVATE
     Lunar-Mining
 )
 
-# ------------------------------------------------------------------------------
-# Testing setup with GoogleTest
-# ------------------------------------------------------------------------------
 enable_testing()
 
 # After Conan has generated the find_package hooks, we can do:

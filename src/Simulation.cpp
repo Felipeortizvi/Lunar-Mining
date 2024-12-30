@@ -4,8 +4,9 @@
 #include <algorithm>
 #include <iomanip>
 
-// For brevity in code references:
+
 using namespace MiningProcess;
+
 using std::cout;
 using std::endl;
 using std::fixed;
