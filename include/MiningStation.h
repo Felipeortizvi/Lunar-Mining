@@ -37,4 +37,4 @@ private:
     int loadsHandled_{0};   // Number of loads handled by this station.
 };
 
-#endif 
+#endif
