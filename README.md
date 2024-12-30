@@ -102,3 +102,8 @@ Execute the code tests with this command:
 `./Debug/lunar_mining_tests.exe` 
 
 ![alt text](images/SimulationTests.png)
+
+
+
+
+**Code by Felipe Villegas**
