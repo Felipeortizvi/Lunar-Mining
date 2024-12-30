@@ -1,6 +1,6 @@
 ## Lunar Mining Simulator
 
-Task is to develop a simulation for a lunar Helium-3 space mining operation. This
+Task is to develop a C++ simulation for a lunar Helium-3 space mining operation. This
 simulation will manage and track the efficiency of mining trucks and unload stations over a
 continuous 72-hour operation.
 
@@ -47,9 +47,9 @@ Execute custom values of (m = 5) trucks, and (n = 5) stations:
 ![alt text](images/LunarSimCustom.png)
 
 
-## Design Choices, Styling Choices, and Considerations
+## Design Choices and Considerations
 
-I designed 3 classes: `MiningTruck`, `MiningStation`, and `Simulation` to create this project. Each class has header files which create public, private, and protected variables and methods. 
+I designed 3 classes: `MiningTruck`, `MiningStation`, and `Simulation` to create this project. The Simulation class contains instances of both Station and MiningTruck, using a composition relationship where Simulation is created of these objects. Also note, each class has header files which create public, private, and protected variables and methods. 
 
 Public methods/variables: Uppercase first letter and underscore at the end, e.g. `GetTruckID_()`.
 Private methods/variables: Lowercase and underscore at the end, e.g. `truckid_`.
