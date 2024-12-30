@@ -49,31 +49,15 @@ Execute custom values of (m = 5) trucks, and (n = 5) stations:
 
 ## Design Choices and Considerations
 
-I designed 3 classes: `MiningTruck`, `MiningStation`, and `Simulation` to create this project. 
-
-The Simulation class contains instances of both Station and MiningTruck, using a **composition relationship** where Simulation is built of these objects. 
-
-Also note, each class has header files which create public, private, and protected variables and methods. 
-
-**Public methods/variables:** Uppercase first letter and underscore at the end, e.g. `GetTruckID_()`.
-
-**Private methods/variables:** Lowercase and underscore at the end, e.g. `truckid_`.
-
-I implemented a **Priority Queue** to efficiently retrieve the next logic to process based on the scheduled time.
+- **Object-Oriented Design:** Implemented three primary classes—`MiningTruck`, `MiningStation`, and `Simulation`—to encapsulate distinct functionalities.
+- **Composition Relationship:** The `Simulation` class has instances of `MiningTruck` and `MiningStation`, managing their interactions and lifecycle.
+- **Naming Conventions:** 
+  - **Public Methods/Variables:** Uppercase first letter with a trailing underscore (e.g., `GetTruckID_()`).
+  - **Private Methods/Variables:** Lowercase with a trailing underscore (e.g., `truckid_`).
+- **Process Queue:** Utilized a priority queue (`std::priority_queue`) to efficiently process events based on their scheduled times.
 
 `std::priority_queue<MiningProcess::Process_, std::vector<MiningProcess::Process_>, std::greater<MiningProcess::Process_>> eventQueue_;`
-
-Each event is encapsulated within a Process_ object, which includes:
-
-**Time_:** The scheduled time for the event (in minutes).
-
-**TruckID_:** The identifier of the truck involved in the event.
-
-**Type_:** The type of event (e.g., FINISH_MINING, ARRIVE_STATION, FINISH_UNLOADING).
-
-**Trailing Underscore convention** highlights internal methods amd private helper methods. 
-
-I considered using smart pointers for events to avoid copies, but since each process is small, copying is simpler and efficient enough. If I were to scale up this simulation, i’d switch to std::shared_ptr<Process>.
+- **Efficiency Considerations:** I considered using smart pointers for events to avoid copies, but since each process is small, copying is simpler and efficient enough. If I were to scale up this simulation, i’d switch to std::shared_ptr<Process>.
 
 ## Dependencies
 
