@@ -6,12 +6,12 @@ continuous 72-hour operation.
 
 ## Key Components
 
-Mining Trucks: These vehicles perform the actual mining tasks.
+**Mining Trucks:** These vehicles perform the actual mining tasks.
 
-Mining Sites: Locations on the moon where the trucks extract Helium-3. Assume an infinite
+**Mining Sites:** Locations on the moon where the trucks extract Helium-3. Assume an infinite
 number of sites, ensuring trucks always have access to mine without waiting.
 
-Mining Unload Stations: Designated stations where trucks unload the mined Helium-3. Each
+**Mining Unload Stations:** Designated stations where trucks unload the mined Helium-3. Each
 station can handle one truck at a time.
 
 
@@ -49,22 +49,26 @@ Execute custom values of (m = 5) trucks, and (n = 5) stations:
 
 ## Design Choices and Considerations
 
-I designed 3 classes: `MiningTruck`, `MiningStation`, and `Simulation` to create this project. The Simulation class contains instances of both Station and MiningTruck, using a composition relationship where Simulation is created of these objects. Also note, each class has header files which create public, private, and protected variables and methods. 
+I designed 3 classes: `MiningTruck`, `MiningStation`, and `Simulation` to create this project. 
 
-Public methods/variables: Uppercase first letter and underscore at the end, e.g. `GetTruckID_()`.
-Private methods/variables: Lowercase and underscore at the end, e.g. `truckid_`.
+The Simulation class contains instances of both Station and MiningTruck, using a **composition relationship** where Simulation is built of these objects. 
 
-I implemented a Priority Queue to efficiently retrieve the next logic to process based on the scheduled time.
+Also note, each class has header files which create public, private, and protected variables and methods. 
+
+**Public methods/variables:** Uppercase first letter and underscore at the end, e.g. `GetTruckID_()`.
+**Private methods/variables:** Lowercase and underscore at the end, e.g. `truckid_`.
+
+I implemented a **Priority Queue** to efficiently retrieve the next logic to process based on the scheduled time.
 
 `std::priority_queue<MiningProcess::Process_, std::vector<MiningProcess::Process_>, std::greater<MiningProcess::Process_>> eventQueue_;`
 
 Each event is encapsulated within a Process_ object, which includes:
 
-Time_: The scheduled time for the event (in minutes).
+**Time_:** The scheduled time for the event (in minutes).
 
-TruckID_: The identifier of the truck involved in the event.
+**TruckID_:** The identifier of the truck involved in the event.
 
-Type_: The type of event (e.g., FINISH_MINING, ARRIVE_STATION, FINISH_UNLOADING).
+**Type_:** The type of event (e.g., FINISH_MINING, ARRIVE_STATION, FINISH_UNLOADING).
 
 Trailing Underscore convention highlights an internal method and private helper methods. 
 
@@ -78,9 +82,9 @@ The project uses Conan for dependency management and Google Test for unit testin
 
 Ensure the following tools are installed on your system:
 
-CMake: Version 3.15 or higher
+**CMake:** Version 3.15 or higher
 
-Conan: Version 2.x
+**Conan:** Version 2.x
 
 
 ## Compiling The Code For Testing (Using Conan)
