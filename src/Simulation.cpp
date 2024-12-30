@@ -15,7 +15,6 @@ using std::numeric_limits;
 
 Simulation::Simulation(int nTrucks, int nStations)
     : numTrucks_(nTrucks), numStations_(nStations), currentTime_(0)
-    
     //Constructs the simulation with the specified number of trucks and stations. 
 
 {
@@ -36,7 +35,7 @@ Simulation::Simulation(int nTrucks, int nStations)
 }
 
 void Simulation::Run_() {
-    // Runs the entire simulation (72 hours or until the event queue is empty).
+    // Runs the entire simulation (72 hours or until queue is empty if arrived just before 72 hours).
 
     // Initialize trucks with random mining finish events
     for (int i = 0; i < numTrucks_; ++i) {

@@ -49,13 +49,13 @@ int MiningTruck::GetLoadsDelivered_() const {
 }
 
 double MiningTruck::OverallTimeHours_() const {
-    /* Sum all time (in minutes) and then convert to hours */
+    //Sum all time (in minutes) and then convert to hours
 
     double totalMinutes = static_cast<double>(
         totalMiningTime_ + totalTravelTime_ + totalWaitingTime_ + totalUnloadingTime_
     );
     double totalHours = totalMinutes / 60.0;
 
-    // Round to two decimal places
+    // Rounds to two decimal places for aesthetic/legibility
     return std::round(totalHours * 100.0) / 100.0;
 }
