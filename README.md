@@ -28,13 +28,13 @@ real-time to provide timely analysis.
 
 ## Run Executable Program
 
+`cd build`
+
 `./LunarSim.exe`
 
 or
 
-`./LunarSim.exe 4 3` 
-
-Allows you to add arguments for 4 Trucks and 3 Stations.
+`./LunarSim.exe 4 3`  eg. Arguement for n = 4 Trucks, and m = 3 Stations.
 
 ## Compiling The Code
 
